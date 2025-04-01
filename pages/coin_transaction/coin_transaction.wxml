@@ -1,0 +1,59 @@
+<!--pages/coin_transaction/coin_transaction.wxml-->
+<view class="coin-transaction-page">
+  <navigation-bar title="碳币交易" back="{{true}}" color="white" background="#07C160"></navigation-bar>
+  
+  <view class="form-container">
+    <view class="form-group">
+      <view class="form-label">交易类型</view>
+      <radio-group class="type-radio-group" bindchange="handleTypeChange">
+        <label class="radio-label {{type === 'income' ? 'active' : ''}}">
+          <radio value="income" checked="{{type === 'income'}}" color="#07C160" />
+          <text>收入</text>
+        </label>
+        <label class="radio-label {{type === 'expense' ? 'active' : ''}}">
+          <radio value="expense" checked="{{type === 'expense'}}" color="#07C160" />
+          <text>支出</text>
+        </label>
+      </radio-group>
+    </view>
+    
+    <view class="form-group">
+      <view class="form-label">金额</view>
+      <input 
+        class="form-input" 
+        type="digit" 
+        placeholder="请输入金额" 
+        value="{{amount}}" 
+        bindinput="handleAmountInput"
+      />
+    </view>
+    
+    <view class="form-group">
+      <view class="form-label">标题</view>
+      <input 
+        class="form-input" 
+        type="text" 
+        placeholder="请输入交易标题" 
+        value="{{title}}" 
+        bindinput="handleTitleInput"
+      />
+    </view>
+    
+    <view class="form-group">
+      <view class="form-label">描述</view>
+      <textarea 
+        class="form-textarea" 
+        placeholder="请输入交易描述（选填）" 
+        value="{{description}}" 
+        bindinput="handleDescriptionInput"
+      ></textarea>
+    </view>
+    
+    <button 
+      class="submit-btn" 
+      bindtap="submitTransaction" 
+      loading="{{isSubmitting}}" 
+      disabled="{{isSubmitting}}"
+    >提交</button>
+  </view>
+</view>

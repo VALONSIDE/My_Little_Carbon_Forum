@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/forum/forum",
+    "pages/account/account",
+    "pages/post/post",
+    "pages/post_create/post_create",
+    "pages/login/login",
+    "pages/user_edit/user_edit",
+    "pages/account_settings/account_settings",
+    "pages/carbon_id/carbon_id",
+    "pages/carbon_coin/carbon_coin",
+    "pages/coin_transaction/coin_transaction"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#07C160",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/forum/forum",
+        "text": "论坛",
+        "iconPath": "images/forum_icon.png",
+        "selectedIconPath": "images/forum_icon.png"
+      },
+      {
+        "pagePath": "pages/account/account",
+        "text": "账户",
+        "iconPath": "images/account_icon.png",
+        "selectedIconPath": "images/account_icon.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "renderer": "skyline",
+  "rendererOptions": {
+    "skyline": {
+      "defaultDisplayBlock": true,
+      "defaultContentBox": true,
+      "disableABTest": true,
+      "sdkVersionBegin": "3.0.0",
+      "sdkVersionEnd": "15.255.255"
+    }
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

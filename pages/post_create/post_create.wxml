@@ -1,0 +1,70 @@
+<!--pages/post_create/post_create.wxml-->
+<view class="post-create-page">
+  <navigation-bar title="发布帖子" back="{{true}}" color="white" background="#07C160"></navigation-bar>
+  
+  <view class="post-form">
+    <!-- 标题输入 -->
+    <view class="input-section">
+      <input 
+        class="title-input" 
+        placeholder="请输入标题" 
+        value="{{title}}"
+        bindinput="onTitleInput"
+        maxlength="50"
+      />
+    </view>
+
+    <!-- 内容输入 -->
+    <view class="input-section">
+      <textarea 
+        class="content-input" 
+        placeholder="分享你的想法..." 
+        value="{{content}}"
+        bindinput="onContentInput"
+        maxlength="2000"
+        auto-height
+      ></textarea>
+    </view>
+
+    <!-- 图片上传区域 -->
+    <view class="image-section">
+      <view class="image-list">
+        <block wx:for="{{images}}" wx:key="*this">
+          <view class="image-item">
+            <image 
+              src="{{item}}" 
+              mode="aspectFill" 
+              bindtap="previewImage"
+              data-src="{{item}}"
+            ></image>
+            <view 
+              class="delete-btn"
+              catchtap="deleteImage"
+              data-index="{{index}}"
+            >×</view>
+          </view>
+        </block>
+        <view 
+          class="add-image-btn" 
+          bindtap="chooseImage" 
+          wx:if="{{images.length < 9}}"
+        >
+          <text class="add-icon">+</text>
+          <text class="add-text">添加图片</text>
+        </view>
+      </view>
+      <text class="image-tip">最多上传9张图片</text>
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="submit-section">
+    <button 
+      class="submit-btn {{submitDisabled || uploading ? 'disabled' : ''}}"
+      bindtap="submitPost"
+      disabled="{{submitDisabled || uploading}}"
+    >
+      {{uploading ? '发布中...' : '发布'}}
+    </button>
+  </view>
+</view>

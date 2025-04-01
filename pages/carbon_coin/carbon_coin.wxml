@@ -1,0 +1,32 @@
+<!--pages/carbon_coin/carbon_coin.wxml-->
+<view class="carbon-coin-page">
+  <navigation-bar title="碳币" back="{{true}}" color="white" background="#07C160"></navigation-bar>
+  
+  <view class="balance-container">
+    <view class="balance-header">当前余额</view>
+    <view class="balance-amount">{{carbonCoin}}</view>
+    <button class="add-transaction-btn" bindtap="navigateToAddTransaction">添加交易记录</button>
+  </view>
+
+  <view class="transactions-container">
+    <view class="transactions-header">交易记录</view>
+    
+    <block wx:if="{{transactions.length > 0}}">
+      <view class="transaction-list">
+        <view class="transaction-item" wx:for="{{transactions}}" wx:key="_id">
+          <view class="transaction-info">
+            <text class="transaction-title">{{item.title}}</text>
+            <text class="transaction-time">{{item.createTime}}</text>
+          </view>
+          <text class="transaction-amount {{item.type === 'income' ? 'income' : 'expense'}}">{{item.type === 'income' ? '+' : '-'}}{{item.amount}}</text>
+        </view>
+      </view>
+    </block>
+    
+    <block wx:else>
+      <view class="empty-transactions">
+        <text class="empty-text">暂无交易记录</text>
+      </view>
+    </block>
+  </view>
+</view>

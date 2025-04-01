@@ -1,0 +1,91 @@
+/* pages/user_edit/user_edit.wxss */
+page {
+  padding-bottom: 40rpx;
+}
+
+.edit-form {
+  background: #fff;
+  margin-top: 20rpx;
+}
+
+.form-item {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.form-item:last-child {
+  border-bottom: none;
+}
+
+.label {
+  width: 140rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.avatar-item {
+  padding: 40rpx 30rpx;
+}
+
+.avatar-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+}
+
+.avatar-wrapper::after {
+  border: none;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  margin-right: 20rpx;
+}
+
+.edit-text {
+  font-size: 28rpx;
+  color: #666;
+  margin-top: 45rpx;
+  border: 1rpx solid #ddd;
+  padding: 8rpx 16rpx;
+  border-radius: 8rpx;
+}
+
+.button-area {
+  padding: 40rpx 30rpx;
+}
+
+.save-btn {
+  width: 100% !important;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #07C160;
+  color: #fff;
+  font-size: 32rpx;
+  border-radius: 44rpx;
+  border: none;
+}
+
+.save-btn::after {
+  border: none;
+}
+
+.save-btn[disabled] {
+  background: #07C160;
+  opacity: 0.6;
+}

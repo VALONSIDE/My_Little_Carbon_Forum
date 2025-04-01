@@ -1,0 +1,79 @@
+<!--pages/login/login.wxml-->
+<view class="page-container">
+  <navigation-bar 
+    title="碳账户认证" 
+    back="{{false}}" 
+    color="black" 
+    background="white" 
+    bindback="handleBack"
+    bindbackFail="handleBackFail">
+  </navigation-bar>
+  
+  <view class="content-container">
+    <view class="tab-header">
+      <view class="tab-item {{activeTab === 'login' ? 'active' : ''}}" bindtap="switchTab" data-tab="login">登录</view>
+      <view class="tab-item {{activeTab === 'register' ? 'active' : ''}}" bindtap="switchTab" data-tab="register">新建账户</view>
+    </view>
+
+    <scroll-view scroll-y enable-flex class="scroll-area">
+      <!-- 登录面板 -->
+      <view class="panel" hidden="{{activeTab !== 'login'}}">
+        <!-- 账户名登录 -->
+        <view class="section-title">账户名登录</view>
+        <view class="input-group">
+          <input class="input" type="text" placeholder="请输入账户名" bindinput="onLoginIdInput" value="{{loginId}}" />
+        </view>
+        <view class="input-group">
+          <input class="input" type="password" placeholder="请输入密码" bindinput="onLoginPasswordInput" value="{{loginPassword}}" password="true" />
+        </view>
+        <button class="submit-btn" bindtap="handleLogin" loading="{{loading}}">登录</button>
+        
+        <view class="divider">
+          <view class="divider-line"></view>
+          <view class="divider-text">或</view>
+          <view class="divider-line"></view>
+        </view>
+        
+        <!-- 手机号登录 -->
+        <view class="section-title">手机号登录</view>
+        <view class="input-group">
+          <input class="input" type="number" placeholder="请输入手机号" maxlength="11" bindinput="onPhoneLoginInput" value="{{phoneLogin}}" />
+        </view>
+        <view class="input-group">
+          <input class="input" type="password" placeholder="请输入密码" bindinput="onPhonePasswordInput" value="{{phonePassword}}" password="true" />
+        </view>
+        <button class="submit-btn phone-login-btn" bindtap="handlePhoneLogin" loading="{{phoneLoading}}">手机号登录</button>
+
+        <view class="divider">
+          <view class="divider-line"></view>
+          <view class="divider-text">或</view>
+          <view class="divider-line"></view>
+        </view>
+
+        <!-- 碳ID登录 -->
+        <view class="section-title">碳ID登录</view>
+        <view class="input-group">
+          <input class="input" type="text" placeholder="请输入碳ID (XX-X-XXXX-XXX)" bindinput="onCarbonIdInput" value="{{carbonId}}" maxlength="13" />
+        </view>
+        <view class="input-group">
+          <input class="input" type="password" placeholder="请输入密码" bindinput="onCarbonPasswordInput" value="{{carbonPassword}}" password="true" />
+        </view>
+        <button class="submit-btn carbon-login-btn" bindtap="handleCarbonLogin" loading="{{carbonLoading}}">碳ID登录</button>
+      </view>
+
+      <!-- 注册面板 -->
+      <view class="panel" hidden="{{activeTab !== 'register'}}">
+        <view class="input-group">
+          <input class="input" type="number" placeholder="请输入手机号" maxlength="11" bindinput="onPhoneInput" value="{{phone}}" />
+        </view>
+        <view class="input-group">
+          <input class="input" type="password" placeholder="请输入密码" bindinput="onRegisterPasswordInput" value="{{registerPassword}}" password="true" />
+        </view>
+        <view class="input-group">
+          <input class="input" type="password" placeholder="请确认密码" bindinput="onConfirmPasswordInput" value="{{confirmPassword}}" password="true" />
+        </view>
+        <button class="submit-btn" bindtap="handleRegister" loading="{{loading}}">注册</button>
+      </view>
+    </scroll-view>
+  </view>
+</view>

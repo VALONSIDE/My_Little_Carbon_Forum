@@ -1,0 +1,25 @@
+<!--pages/carbon_id/carbon_id.wxml-->
+<view class="carbon-id-page">
+  <navigation-bar title="碳ID" back="{{true}}" color="white" background="#07C160"></navigation-bar>
+  
+  <view class="code-container">
+    <view class="id-info">
+      <text class="carbon-id-text">碳ID：{{carbonId}}</text>
+    </view>
+
+    <view class="code-section">
+      <view class="qr-code">
+        <canvas type="2d" id="qrCode" class="code-canvas"></canvas>
+      </view>
+
+      <view class="bar-code">
+        <canvas type="2d" id="barCode" class="code-canvas"></canvas>
+      </view>
+    </view>
+
+    <view class="tips">
+      <text class="tip-text">扫描上方的二维码或条形码</text>
+      <text class="tip-text">即可获取您的碳ID信息</text>
+    </view>
+  </view>
+</view>

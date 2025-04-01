@@ -1,0 +1,161 @@
+/**forum.wxss**/
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-color);
+}
+
+.forum-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f6f6f6;
+}
+
+.scrollarea {
+  flex: 1;
+  height: calc(100vh - 180rpx);
+}
+
+.forum-container {
+  display: flex;
+  padding: 10rpx;
+}
+
+.post-column {
+  flex: 1;
+  padding: 0 10rpx;
+}
+
+.left-column {
+  margin-right: 5rpx;
+}
+
+.right-column {
+  margin-left: 5rpx;
+}
+
+.post-card {
+  background: #fff;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+}
+
+.post-image {
+  width: 100%;
+  height: 300rpx;
+}
+
+.post-info {
+  padding: 16rpx;
+}
+
+.post-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.post-content {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.4;
+  margin-bottom: 16rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.author-info {
+  display: flex;
+  align-items: center;
+}
+
+.author-avatar {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  margin-right: 8rpx;
+}
+
+.post-author {
+  font-size: 24rpx;
+  color: #666;
+  font-weight: 500;
+}
+
+.post-stats {
+  display: flex;
+  align-items: center;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  margin-left: 24rpx;
+}
+
+.stat-item .icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 6rpx;
+}
+
+.stat-item text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 发帖按钮样式 */
+.create-post-button {
+  position: fixed;
+  right: 30rpx;
+  bottom: 120rpx;
+  width: 100rpx;
+  height: 100rpx;
+  background: #07C160;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.2);
+  z-index: 100;
+}
+
+.add-icon {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.post-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+  color: #999;
+  margin: 8rpx 0;
+}
+
+.post-time {
+  color: #999;
+}
+
+.loading, .no-more, .empty {
+  text-align: center;
+  font-size: 24rpx;
+  color: #999;
+  padding: 20rpx 0;
+}

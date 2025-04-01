@@ -1,0 +1,118 @@
+/* pages/carbon_coin/carbon_coin.wxss */
+.carbon-coin-page {
+  min-height: 100vh;
+  background-color: #f7f7f7;
+}
+
+/* 余额容器 */
+.balance-container {
+  background-color: #ffffff;
+  margin: 20rpx;
+  border-radius: 16rpx;
+  padding: 40rpx 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.balance-header {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+}
+
+.balance-amount {
+  font-size: 60rpx;
+  font-weight: bold;
+  color: #07C160;
+}
+
+.add-transaction-btn {
+  margin-top: 30rpx;
+  width: 80%;
+  height: 80rpx;
+  background-color: #07C160;
+  color: #fff;
+  font-size: 28rpx;
+  border-radius: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 交易记录容器 */
+.transactions-container {
+  background-color: #ffffff;
+  margin: 20rpx;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.transactions-header {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 30rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+/* 交易列表 */
+.transaction-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.transaction-item:last-child {
+  border-bottom: none;
+}
+
+.transaction-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.transaction-title {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.transaction-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.transaction-amount {
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+.transaction-amount.income {
+  color: #07C160;
+}
+
+.transaction-amount.expense {
+  color: #ff4d4f;
+}
+
+/* 空状态 */
+.empty-transactions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60rpx 0;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+}

@@ -1,0 +1,37 @@
+<!--pages/user_edit/user_edit.wxml-->
+<view style="{{pageStyle}}">
+  <navigation-bar title="编辑资料" back="{{true}}" color="black" background="#ffffff"></navigation-bar>
+
+  <view class="edit-form">
+    <!-- 头像选择 -->
+    <view class="form-item avatar-item">
+      <text class="label">头像</text>
+      <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="chooseAvatar">
+        <image class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+        <text class="edit-text">点击更换</text>
+      </button>
+    </view>
+
+    <!-- 昵称输入 -->
+    <view class="form-item">
+      <text class="label">昵称</text>
+      <input 
+        type="nickname" 
+        class="input" 
+        placeholder="请输入昵称" 
+        value="{{userInfo.nickName}}"
+        bindinput="onNicknameInput"
+      />
+    </view>
+  </view>
+
+  <!-- 保存按钮 -->
+  <view class="button-area">
+    <button 
+      class="save-btn" 
+      bindtap="saveUserInfo"
+      loading="{{loading}}"
+      disabled="{{loading}}"
+    >保存</button>
+  </view>
+</view>
