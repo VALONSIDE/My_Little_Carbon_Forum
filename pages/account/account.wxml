@@ -9,7 +9,7 @@
         <image class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
         <view class="user-detail">
           <text class="nickname">{{userInfo.nickName}}</text>
-          <text class="carbon-id" bindtap="navigateToCarbonId">碳ID: {{userInfo.carbonId || '未生成'}}</text>
+          <text class="carbon-id">碳ID: {{userInfo.carbonId || '未生成'}}</text>
         </view>
         <button class="edit-btn" bindtap="navigateToEdit">编辑资料</button>
       </view>
@@ -38,17 +38,41 @@
       </view>
       <image class="arrow-icon" src="/images/arrow-right.png" mode="aspectFit"></image>
     </view>
-    <view class="feature-item" bindtap="navigateToSettings">
+    <view class="feature-item" bindtap="navigateToCarbonId">
       <view class="feature-content">
-        <image class="feature-icon" src="/images/settings.png" mode="aspectFit"></image>
-        <text class="feature-text">设置</text>
+        <image class="feature-icon" src="/images/qrcode.png" mode="aspectFit"></image>
+        <text class="feature-text">碳身份码</text>
       </view>
       <image class="arrow-icon" src="/images/arrow-right.png" mode="aspectFit"></image>
     </view>
   </view>
 
+  <!-- 设置功能区 -->
+  <view class="settings-list">
+    <view class="settings-title">设置</view>
+    <view class="settings-item" bindtap="clearCache">
+      <view class="settings-item-left">
+        <image class="settings-icon" src="/images/clear.png" mode="aspectFit" />
+        <text>清除缓存</text>
+      </view>
+      <view class="settings-item-right">
+        <text class="cache-size">{{cacheSize}}</text>
+        <image class="arrow-right" src="/images/arrow-right.png" mode="aspectFit" />
+      </view>
+    </view>
+    <view class="settings-item" bindtap="aboutUs">
+      <view class="settings-item-left">
+        <image class="settings-icon" src="/images/about.png" mode="aspectFit" />
+        <text>关于我们</text>
+      </view>
+      <view class="settings-item-right">
+        <image class="arrow-right" src="/images/arrow-right.png" mode="aspectFit" />
+      </view>
+    </view>
+  </view>
+  
   <!-- 版本信息 -->
   <view class="version-info">
-    <text>版本 1.4.1</text>
+    <text>版本 1.5.1</text>
   </view>
 </view>

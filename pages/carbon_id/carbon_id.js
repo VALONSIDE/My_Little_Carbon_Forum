@@ -53,6 +53,11 @@ Page({
       })
   },
 
+  /*
+  碳足迹论坛：一个致力于环保和可持续发展的社区平台。
+  GitHub已开源，项目地址：https://github.com/VALONSIDE/My_Little_Carbon_Forum/
+  */
+ 
   // 使用CODE39编码绘制条形码（比CODE128有更少的竖线，更易于显示）
   async drawBarCode() {
     const query = wx.createSelectorQuery()

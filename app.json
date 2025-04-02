@@ -6,7 +6,6 @@
     "pages/post_create/post_create",
     "pages/login/login",
     "pages/user_edit/user_edit",
-    "pages/account_settings/account_settings",
     "pages/carbon_id/carbon_id",
     "pages/carbon_coin/carbon_coin",
     "pages/coin_transaction/coin_transaction"

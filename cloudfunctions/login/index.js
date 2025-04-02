@@ -45,6 +45,11 @@ function generateRandomString(length) {
   return result;
 }
 
+/*
+碳足迹论坛：一个致力于环保和可持续发展的社区平台。
+GitHub已开源，项目地址：https://github.com/VALONSIDE/My_Little_Carbon_Forum/
+*/
+
 // 生成唯一碳ID
 async function generateUniqueCarbonId() {
   const maxAttempts = 10; // 最大尝试次数

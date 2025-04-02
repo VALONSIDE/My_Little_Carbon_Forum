@@ -1,4 +1,5 @@
 // 中文语言包
+// 远古代码，放着别动（doge by VALONSIDE
 module.exports = {
   // 通用
   'settings': '设置',

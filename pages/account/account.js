@@ -6,11 +6,39 @@ Page({
     userInfo: null,
     isLogin: false,
     loading: false,
-    refreshing: false  // 添加下拉刷新状态
+    refreshing: false,  // 添加下拉刷新状态
+    cacheSize: '0KB'    // 添加缓存大小
   },
 
   onLoad() {
     this.loadUserInfo()
+    this.calculateCacheSize()
+  },
+  
+  // 计算缓存大小
+  async calculateCacheSize() {
+    try {
+      const res = await wx.getStorageInfo()
+      const size = res.currentSize
+      let sizeStr = ''
+      
+      if (size < 1024) {
+        sizeStr = size + 'KB'
+      } else if (size < 1024 * 1024) {
+        sizeStr = (size / 1024).toFixed(2) + 'MB'
+      } else {
+        sizeStr = (size / (1024 * 1024)).toFixed(2) + 'GB'
+      }
+      
+      this.setData({
+        cacheSize: sizeStr
+      })
+    } catch (error) {
+      console.error('获取缓存大小失败：', error)
+      this.setData({
+        cacheSize: '获取失败'
+      })
+    }
   },
 
   onShow() {
@@ -150,10 +178,90 @@ Page({
     })
   },
 
-  // 跳转到设置页面
-  navigateToSettings() {
+  // 跳转到碳身份码页面
+  navigateToCarbonId() {
+    if (!this.data.isLogin) {
+      wx.showToast({
+        title: '请先登录',
+        icon: 'none'
+      })
+      return
+    }
     wx.navigateTo({
-      url: '/pages/account_settings/account_settings'
+      url: '/pages/carbon_id/carbon_id'
+    })
+  },
+  
+  // 清除缓存
+  async clearCache() {
+    try {
+      wx.showModal({
+        title: '提示',
+        content: '确定要清除缓存吗？',
+        success: async (res) => {
+          if (res.confirm) {
+            wx.showLoading({ title: '清理中...' })
+            
+            // 保存用户登录信息
+            const userInfo = wx.getStorageSync('userInfo')
+            
+            // 清除本地存储
+            wx.clearStorageSync()
+            
+            // 恢复用户登录信息
+            if (userInfo) {
+              wx.setStorageSync('userInfo', userInfo)
+            }
+            
+            // 清除文件缓存
+            const fileList = await wx.getSavedFileList()
+            for (const file of fileList.fileList) {
+              await wx.removeSavedFile({
+                filePath: file.filePath
+              })
+            }
+            
+            // 重新计算缓存大小
+            await this.calculateCacheSize()
+            
+            wx.hideLoading()
+            wx.showToast({
+              title: '清理完成',
+              icon: 'success'
+            })
+          }
+        }
+      })
+    } catch (error) {
+      console.error('清理缓存失败：', error)
+      wx.hideLoading()
+      wx.showToast({
+        title: '清理失败',
+        icon: 'error'
+      })
+    }
+  },
+
+
+  /***
+   *
+   *   █████▒█    ██  ▄████▄   ██ ▄█▀       ██████╗ ██╗   ██╗ ██████╗
+   * ▓██   ▒ ██  ▓██▒▒██▀ ▀█   ██▄█▒        ██╔══██╗██║   ██║██╔════╝
+   * ▒████ ░▓██  ▒██░▒▓█    ▄ ▓███▄░        ██████╔╝██║   ██║██║  ███╗
+   * ░▓█▒  ░▓▓█  ░██░▒▓▓▄ ▄██▒▓██ █▄        ██╔══██╗██║   ██║██║   ██║
+   * ░▒█░   ▒▒█████▓ ▒ ▓███▀ ░▒██▒ █▄       ██████╔╝╚██████╔╝╚██████╔╝
+   *  ▒ ░   ░▒▓▒ ▒ ▒ ░ ░▒ ▒  ░▒ ▒▒ ▓▒       ╚═════╝  ╚═════╝  ╚═════╝
+   *  ░     ░░▒░ ░ ░   ░  ▒   ░ ░▒ ▒░
+   *  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
+   *           ░     ░ ░      ░  ░
+   */
+
+  // 关于我们
+  aboutUs() {
+    wx.showModal({
+      title: '关于我们',
+      content: '碳足迹论坛：一个致力于环保和可持续发展的社区平台。\n\nGitHub已开源，项目地址：https://github.com/VALONSIDE/My_Little_Carbon_Forum/',
+      showCancel: false
     })
   },
 

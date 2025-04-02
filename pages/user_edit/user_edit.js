@@ -97,6 +97,11 @@ Page({
     }
   },
 
+  /*
+  碳足迹论坛：一个致力于环保和可持续发展的社区平台。
+  GitHub已开源，项目地址：https://github.com/VALONSIDE/My_Little_Carbon_Forum/
+  */
+
   // 保存用户信息
   async saveUserInfo() {
     if (this.data.loading) return
