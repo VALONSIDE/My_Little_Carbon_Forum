@@ -1,0 +1,103 @@
+<!--pages/carbon_account/carbon_account.wxml-->
+<view class="carbon-account-page">
+  <navigation-bar title="碳账户" back="{{false}}" color="white" background="#07C160"></navigation-bar>
+  
+  <view class="header-container">
+    <view class="header-content">
+      <view class="header-title">低碳任务</view>
+      <view class="header-subtitle">完成任务获取碳币奖励</view>
+    </view>
+    <view class="coin-container" bindtap="navigateToCarbonCoin">
+      <text class="coin-text">碳币余额：{{carbonCoinBalance}}</text>
+      <image class="arrow-icon" src="/images/arrow-right.png" mode="aspectFit"></image>
+    </view>
+  </view>
+
+  <view class="tasks-container">
+    <block wx:if="{{tasks.length > 0}}">
+      <view class="task-list">
+        <view class="task-item {{completedTasks.includes(item.id) ? 'completed' : ''}}" 
+              wx:for="{{tasks}}" 
+              wx:key="id" 
+              bindtap="checkInTask" 
+              data-id="{{item.id}}">
+          <view class="task-icon-container">
+            <image class="task-icon" src="{{item.icon}}" mode="aspectFit"></image>
+          </view>
+          <view class="task-info">
+            <view class="task-title">{{item.title}}</view>
+            <view class="task-description">{{item.description}}</view>
+          </view>
+          <view class="task-reward">
+            <text class="reward-amount">+{{item.coinReward}}</text>
+            <view class="check-in-btn {{completedTasks.includes(item.id) ? 'checked' : ''}}">
+              {{completedTasks.includes(item.id) ? '已完成' : '打卡'}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    
+    <block wx:else>
+      <view class="empty-tasks">
+        <text class="empty-text">暂无可用任务</text>
+      </view>
+    </block>
+  </view>
+
+  <!-- 用户创建的任务 -->
+  <view class="user-tasks-container">
+    <view class="section-header">
+      <text class="section-title">我创建的任务</text>
+    </view>
+    
+    <block wx:if="{{userTasksLoading}}">
+      <view class="loading-container">
+        <view class="loading"></view>
+        <text>加载中...</text>
+      </view>
+    </block>
+    
+    <block wx:elif="{{userTasks.length > 0}}">
+      <view class="user-task-list">
+        <view class="user-task-item" 
+              wx:for="{{userTasks}}" 
+              wx:key="_id" 
+              bindtap="navigateToTaskDetail"
+              data-id="{{item._id}}">
+          <view class="user-task-info">
+            <view class="user-task-title">{{item.title}}</view>
+            <view class="user-task-type">{{item.type}}</view>
+          </view>
+          <view class="user-task-date">
+            <text>{{item.startDate}} 至 {{item.endDate}}</text>
+          </view>
+          <view class="user-task-reward">
+            <text class="reward-amount">+{{item.coinReward}}</text>
+          </view>
+          <view class="arrow-right"></view>
+        </view>
+      </view>
+    </block>
+    
+    <block wx:else>
+      <view class="empty-tasks">
+        <text class="empty-text">暂无创建的任务</text>
+      </view>
+    </block>
+  </view>
+  
+  <view class="tips-container">
+    <view class="tips-title">小贴士</view>
+    <view class="tips-content">
+      <text>1. 每项任务每天只能完成一次</text>
+      <text>2. 任务奖励会立即发放到您的碳币账户</text>
+      <text>3. 碳币可用于兑换环保商品和服务</text>
+    </view>
+  </view>
+  
+  <!-- 新建任务按钮 -->
+  <view class="add-task-btn" bindtap="navigateToTaskCreate">
+    <text>新建任务</text>
+  </view>
+</view>

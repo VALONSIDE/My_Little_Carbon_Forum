@@ -1,0 +1,68 @@
+<!--pages/task_create/task_create.wxml-->
+<view class="task-create-page">
+  <navigation-bar title="添加任务" back="{{true}}" color="white" background="#07C160"></navigation-bar>
+  
+  <scroll-view scroll-y="true" class="form-container">
+    <form bindsubmit="submitTask">
+      <!-- 任务名称 -->
+      <view class="form-item">
+        <view class="form-label">任务名称</view>
+        <input class="form-input" name="title" placeholder="请输入低碳任务名称" value="{{formData.title}}" />
+      </view>
+      
+      <!-- 任务类型 -->
+      <view class="form-item">
+        <view class="form-label">任务类型</view>
+        <picker mode="selector" range="{{taskTypes}}" value="{{typeIndex}}" bindchange="bindTypeChange">
+          <view class="picker-content">
+            <text>{{taskTypes[typeIndex] || '请选择任务类型'}}</text>
+            <image class="arrow-icon" src="/images/arrow-right.png" mode="aspectFit"></image>
+          </view>
+        </picker>
+      </view>
+      
+      <!-- 开始日期 -->
+      <view class="form-item">
+        <view class="form-label">开始日期</view>
+        <picker mode="date" value="{{formData.startDate}}" bindchange="bindStartDateChange">
+          <view class="picker-content">
+            <text>{{formData.startDate || '请选择开始日期'}}</text>
+            <image class="arrow-icon" src="/images/arrow-right.png" mode="aspectFit"></image>
+          </view>
+        </picker>
+      </view>
+      
+      <!-- 结束日期 -->
+      <view class="form-item">
+        <view class="form-label">结束日期</view>
+        <picker mode="date" value="{{formData.endDate}}" bindchange="bindEndDateChange">
+          <view class="picker-content">
+            <text>{{formData.endDate || '请选择结束日期'}}</text>
+            <image class="arrow-icon" src="/images/arrow-right.png" mode="aspectFit"></image>
+          </view>
+        </picker>
+      </view>
+      
+      <!-- 完成次数 -->
+      <view class="form-item">
+        <view class="form-label">需完成次数</view>
+        <input class="form-input" type="number" name="completionCount" placeholder="请输入需要完成的次数" value="{{formData.completionCount}}" />
+      </view>
+      
+      <!-- 奖励碳币 -->
+      <view class="form-item">
+        <view class="form-label">奖励碳币</view>
+        <input class="form-input" type="digit" name="coinReward" placeholder="请输入完成任务奖励的碳币数量" value="{{formData.coinReward}}" />
+      </view>
+      
+      <!-- 任务描述 -->
+      <view class="form-item">
+        <view class="form-label">任务描述</view>
+        <textarea class="form-textarea" name="description" placeholder="请输入任务描述" value="{{formData.description}}"></textarea>
+      </view>
+      
+      <!-- 提交按钮 -->
+      <button class="submit-btn" form-type="submit">创建任务</button>
+    </form>
+  </scroll-view>
+</view>

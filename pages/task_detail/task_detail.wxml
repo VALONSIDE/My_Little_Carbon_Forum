@@ -1,0 +1,93 @@
+<!--pages/task_detail/task_detail.wxml-->
+<view class="task-detail-page">
+  <navigation-bar title="任务详情" back="{{true}}" color="white" background="#07C160"></navigation-bar>
+  
+  <scroll-view scroll-y="true" class="content-container">
+    <!-- 加载中 -->
+    <block wx:if="{{loading}}">
+      <view class="loading-container">
+        <view class="loading"></view>
+        <text>加载中...</text>
+      </view>
+    </block>
+    
+    <!-- 任务详情 -->
+    <block wx:elif="{{task}}">
+      <view class="task-header">
+        <view class="task-title">{{task.title}}</view>
+        <view class="task-type">{{task.type}}</view>
+      </view>
+      
+      <view class="task-info-card">
+        <view class="info-item">
+          <text class="info-label">开始日期</text>
+          <text class="info-value">{{task.startDate}}</text>
+        </view>
+        <view class="info-item">
+          <text class="info-label">结束日期</text>
+          <text class="info-value">{{task.endDate}}</text>
+        </view>
+        <view class="info-item">
+          <text class="info-label">完成次数</text>
+          <text class="info-value">{{completionRecords.length}} / {{task.completionCount}}</text>
+        </view>
+        <view class="info-item">
+          <text class="info-label">奖励碳币</text>
+          <text class="info-value coin-value">{{task.coinReward}}</text>
+        </view>
+      </view>
+      
+      <!-- 进度条 -->
+      <view class="progress-container">
+        <text class="progress-title">完成进度</text>
+        <view class="progress-bar-container">
+          <view class="progress-bar" style="width: {{completionProgress}}%"></view>
+        </view>
+        <text class="progress-text">{{completionProgress}}%</text>
+      </view>
+      
+      <!-- 任务描述 -->
+      <view class="description-container">
+        <text class="section-title">任务描述</text>
+        <view class="description-content">
+          <text>{{task.description || '暂无描述'}}</text>
+        </view>
+      </view>
+      
+      <!-- 打卡记录 -->
+      <view class="records-container">
+        <text class="section-title">打卡记录</text>
+        <view class="records-list">
+          <block wx:if="{{completionRecords.length > 0}}">
+            <view class="record-item" wx:for="{{completionRecords}}" wx:key="_id">
+              <view class="record-date">{{item.completionDate}}</view>
+              <view class="record-reward">+{{item.coinRewarded}}</view>
+            </view>
+          </block>
+          <block wx:else>
+            <view class="empty-records">
+              <text>暂无打卡记录</text>
+            </view>
+          </block>
+        </view>
+      </view>
+    </block>
+    
+    <!-- 错误提示 -->
+    <block wx:else>
+      <view class="error-container">
+        <text>任务不存在或已被删除</text>
+      </view>
+    </block>
+  </scroll-view>
+  
+  <!-- 打卡按钮 -->
+  <view class="check-in-btn {{canCheckIn ? '' : 'disabled'}}" bindtap="checkInTask" wx:if="{{task && !isCompleted}}">
+    <text>{{canCheckIn ? '打卡' : '今日已打卡'}}</text>
+  </view>
+  
+  <!-- 已完成提示 -->
+  <view class="completed-tip" wx:elif="{{task && isCompleted}}">
+    <text>任务已完成</text>
+  </view>
+</view>

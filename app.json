@@ -8,7 +8,10 @@
     "pages/user_edit/user_edit",
     "pages/carbon_id/carbon_id",
     "pages/carbon_coin/carbon_coin",
-    "pages/coin_transaction/coin_transaction"
+    "pages/coin_transaction/coin_transaction",
+    "pages/carbon_account/carbon_account",
+    "pages/task_create/task_create",
+    "pages/task_detail/task_detail"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -27,8 +30,14 @@
         "selectedIconPath": "images/forum_icon.png"
       },
       {
+        "pagePath": "pages/carbon_account/carbon_account",
+        "text": "碳账户",
+        "iconPath": "images/carbon_account_icon.png",
+        "selectedIconPath": "images/carbon_account_icon.png"
+      },
+      {
         "pagePath": "pages/account/account",
-        "text": "账户",
+        "text": "我的",
         "iconPath": "images/account_icon.png",
         "selectedIconPath": "images/account_icon.png"
       }
